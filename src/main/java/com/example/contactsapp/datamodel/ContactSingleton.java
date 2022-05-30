@@ -11,6 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.util.IllegalFormatCodePointException;
 import java.util.Iterator;
 import java.util.List;
 
@@ -63,7 +64,11 @@ public class ContactSingleton {
                 sb.append("\t");
                 sb.append(c.getPhone());
                 sb.append("\t");
-                sb.append(c.getComment());
+                if (c.getComment().isEmpty()){
+                    sb.append(" ");
+                }else{
+                    sb.append(c.getComment());
+                }
                 br.write(sb.toString());
                 br.newLine();
             }
@@ -88,9 +93,6 @@ public class ContactSingleton {
                 String name = contactPiece[0];
                 String surname = contactPiece[1];
                 String phone = contactPiece[2];
-                if (contactPiece[3].isEmpty()){
-                    Contact c = new Contact(name, surname, phone);
-                }
                 String comment = contactPiece[3];
                 Contact c = new Contact(name, surname, phone, comment);
                 contacts.add(c);

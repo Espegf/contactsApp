@@ -21,6 +21,7 @@ public class DialogController {
     @FXML
     private TextArea comment;
 
+
     public Contact processPressOkButton() throws IOException {
         String c = comment.getText();
         Contact contact;
@@ -40,13 +41,14 @@ public class DialogController {
         return contact;
     }
 
-    public Contact editPressOkButton(Contact c) throws IOException {
+    public void editPressOkButton(Contact c) throws IOException{
         if (name.getText().isEmpty() || surname.getText().isEmpty() || phone.getText().isEmpty()){
             throw new IOException("Faltan datos");
         }
-        Contact contact = new Contact(name.getText(), surname.getText(), phone.getText(), comment.getText());
-        ContactSingleton.getInstance().editContact(c, contact);
-        return c;
+        c.setName(name.getText());
+        c.setSurname(surname.getText());
+        c.setPhone(phone.getText());
+        c.setComment(comment.getText());
     }
 
     public void loadContactData(Contact c){

@@ -18,6 +18,8 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.TextField?>
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.contactsapp.controller.MainController"
             fx:id="borderMain">
@@ -48,12 +50,26 @@
                             </ImageView>
                         </graphic>
                     </Button>
+                    <ToggleButton fx:id="buttonStartWith" onAction="#handledisplayContactStartWith">
+                        <tooltip>
+                            <Tooltip text="Search"/>
+                        </tooltip>
+                        <graphic>
+                            <ImageView>
+                                <Image url="@/toolbarButtonGraphics/general/Search16.gif"/>
+                            </ImageView>
+                        </graphic>
+                    </ToggleButton>
+                    <TextField fx:id="search"/>
                 </ToolBar>
             </HBox>
         </VBox>
     </top>
     <center>
         <TableView fx:id="tableViewContacts" >
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
             <columns>
                 <TableColumn text="Name">
                     <cellValueFactory>

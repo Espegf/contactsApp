@@ -1,8 +1,12 @@
 package com.example.contactsapp.controller;
 
+import com.example.contactsapp.ContactException;
 import com.example.contactsapp.datamodel.Contact;
 import com.example.contactsapp.datamodel.ContactSingleton;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -11,19 +15,33 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.Locale;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class MainController {
     @FXML
     private TableView<Contact> tableViewContacts;
-
     @FXML
     private BorderPane borderMain;
     @FXML
     private ContextMenu tableViewContactsMenu;
+    @FXML
+    private ToggleButton buttonStartWith;
+    @FXML
+    private TextField search;
+    @FXML
+    private FilteredList<Contact> filteredListContact;
+
 
     @FXML
     public void initialize(){
+
+        //Lista filtrada
+        filteredListContact = new FilteredList<Contact>(
+                ContactSingleton.getInstance().getContacts(),
+                (contact -> true));
 
         //Menu contextual
         tableViewContactsMenu = new ContextMenu();
@@ -43,6 +61,7 @@ public class MainController {
         });
 
         tableViewContactsMenu.getItems().add(deleteMenuItem);
+        tableViewContactsMenu.getItems().add(editMenuItem);
 
         tableViewContacts.setRowFactory(
                 new Callback<TableView<Contact>, TableRow<Contact>>() {
@@ -74,6 +93,8 @@ public class MainController {
 
         //Mostrar datos
         tableViewContacts.setItems(ContactSingleton.getInstance().getContacts());
+        //Seleccionar primer contacto
+        tableViewContacts.getSelectionModel().selectFirst();
 
 
     }
@@ -111,6 +132,7 @@ public class MainController {
         if (c == null) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("No task");
+            alert.setHeaderText("Error");
             alert.setContentText("No task selected");
             alert.showAndWait();
             return;
@@ -125,7 +147,7 @@ public class MainController {
         try {
             d.getDialogPane().setContent(loader.load());
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
         d.getDialogPane().getButtonTypes().add(ButtonType.OK);
         d.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
@@ -136,13 +158,13 @@ public class MainController {
         Optional<ButtonType> response = d.showAndWait();
         if (response.isPresent() && response.get() == ButtonType.OK) {
             DialogController controller = loader.getController();
-            c = controller.editPressOkButton(c);
+            controller.editPressOkButton(c);
+            tableViewContacts.refresh();
             tableViewContacts.getSelectionModel().select(c);
             }
 
         }
     }
-    //Métodos para menú contextual
 
     @FXML
     public void eraseContact(Contact c){
@@ -169,6 +191,30 @@ public class MainController {
         if (respose.isPresent() && respose.get() == ButtonType.OK){
             Platform.exit();
         }
+    }
+
+    //5
+    @FXML
+    public void handledisplayContactStartWith(){
+        Contact c = tableViewContacts.getSelectionModel().getSelectedItem();
+        String s = search.getText();
+
+            if (buttonStartWith.isSelected()){
+                filteredListContact.setPredicate(contact -> contact.getName().toLowerCase().startsWith(s.toLowerCase()));
+                if (filteredListContact.isEmpty()){
+                    tableViewContacts.setItems(null);
+                }else {
+                    tableViewContacts.setItems(filteredListContact);
+                    tableViewContacts.getSelectionModel().selectFirst();
+                }
+            }else {
+                if (c == null) {
+                    tableViewContacts.getSelectionModel().selectFirst();
+                }
+                filteredListContact.setPredicate(contact -> true);
+                tableViewContacts.getSelectionModel().select(c);
+            }
+
     }
 
 }
