@@ -1,11 +1,15 @@
 package com.example.contactsapp;
 
 public class ContactException extends Exception{
+    private ErrorCode error;
 
-    public ContactException(String message){
+    public ContactException(ErrorCode error, String message){
+        super(message);
+        this.error = error;
     }
 
-    public static void showMessage(ErrorCode error, String message) {
-        System.out.println(error + " " + message);
+    public String showMessage() {
+        String m = error + " " + super.getMessage();
+        return m;
     }
 }

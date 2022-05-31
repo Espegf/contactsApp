@@ -1,6 +1,7 @@
 package com.example.contactsapp.controller;
 
 import com.example.contactsapp.ContactException;
+import com.example.contactsapp.ErrorCode;
 import com.example.contactsapp.datamodel.Contact;
 import com.example.contactsapp.datamodel.ContactSingleton;
 import javafx.concurrent.Task;
@@ -41,9 +42,9 @@ public class DialogController {
         return contact;
     }
 
-    public void editPressOkButton(Contact c) throws IOException{
+    public void editPressOkButton(Contact c) throws ContactException{
         if (name.getText().isEmpty() || surname.getText().isEmpty() || phone.getText().isEmpty()){
-            throw new IOException("Faltan datos");
+            throw new ContactException(ErrorCode.INFO_REMAINING,"Faltan datos");
         }
         c.setName(name.getText());
         c.setSurname(surname.getText());

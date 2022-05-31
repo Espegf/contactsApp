@@ -22,11 +22,12 @@
 <?import javafx.scene.control.TextField?>
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.contactsapp.controller.MainController"
-            fx:id="borderMain">
+            fx:id="borderMain"
+            stylesheets="@/Style.css">
     <top>
-        <VBox>
-            <MenuBar>
-                <Menu text="Contact">
+        <HBox>
+            <MenuBar minHeight="10">
+                <Menu text="Contact" >
                     <items>
                         <MenuItem text="New" fx:id="newContact" onAction="#showDialogNewContact"/>
                         <SeparatorMenuItem/>
@@ -38,7 +39,6 @@
                     </items>
                 </Menu>
             </MenuBar>
-            <HBox>
                 <ToolBar>
                     <Button onAction="#showDialogNewContact">
                         <tooltip>
@@ -50,7 +50,7 @@
                             </ImageView>
                         </graphic>
                     </Button>
-                    <ToggleButton fx:id="buttonStartWith" onAction="#handledisplayContactStartWith">
+                    <ToggleButton fx:id="buttonStartWith" onAction="#handleDisplayContactStartWith">
                         <tooltip>
                             <Tooltip text="Search"/>
                         </tooltip>
@@ -62,8 +62,7 @@
                     </ToggleButton>
                     <TextField fx:id="search"/>
                 </ToolBar>
-            </HBox>
-        </VBox>
+        </HBox>
     </top>
     <center>
         <TableView fx:id="tableViewContacts" >

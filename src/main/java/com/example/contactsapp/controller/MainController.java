@@ -1,6 +1,7 @@
 package com.example.contactsapp.controller;
 
 import com.example.contactsapp.ContactException;
+import com.example.contactsapp.ErrorCode;
 import com.example.contactsapp.datamodel.Contact;
 import com.example.contactsapp.datamodel.ContactSingleton;
 import javafx.application.Platform;
@@ -55,8 +56,13 @@ public class MainController {
             Contact c = tableViewContacts.getSelectionModel().getSelectedItem();
             try {
                 showDialogEditContact();
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (ContactException e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Error");
+                alert.setContentText(e.showMessage());
+                alert.showAndWait();
+                return;
             }
         });
 
@@ -126,7 +132,7 @@ public class MainController {
 
 
     @FXML
-    public void showDialogEditContact() throws IOException {
+    public void showDialogEditContact() throws ContactException {
         Contact c = tableViewContacts.getSelectionModel().getSelectedItem();
 
         if (c == null) {
@@ -147,7 +153,7 @@ public class MainController {
         try {
             d.getDialogPane().setContent(loader.load());
         } catch (IOException e) {
-            e.printStackTrace();
+           throw new ContactException(ErrorCode.DIALOG_ERROR,"eRROR");
         }
         d.getDialogPane().getButtonTypes().add(ButtonType.OK);
         d.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
@@ -195,7 +201,7 @@ public class MainController {
 
     //5
     @FXML
-    public void handledisplayContactStartWith(){
+    public void handleDisplayContactStartWith(){
         Contact c = tableViewContacts.getSelectionModel().getSelectedItem();
         String s = search.getText();
 

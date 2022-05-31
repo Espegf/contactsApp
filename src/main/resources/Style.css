@@ -1,0 +1,117 @@
+*{
+/*
+    -fx-primary-color: rgb(83,81,81);
+    -fx-secondary-color: rgb(211,159,243);
+    -fx-third-color: derive(-fx-secondary-color,50%);
+    -fx-four-color: derive(-fx-primary-color, 50%)
+*/
+
+    -fx-primary-color: rgb(192, 37, 243);
+    -fx-secondary-color: derive(-fx-primary-color, 50%);
+    -fx-third-color: rgb(79, 75, 80);
+    -fx-four-color: rgb(110, 96, 115);
+}
+
+.border-pane{
+    -fx-background-color: -fx-four-color;
+}
+
+/* Tableview style */
+
+.table-view {
+    -fx-base: -fx-four-color;
+    -fx-control-inner-background: -fx-four-color;
+    -fx-background-color: -fx-four-color;
+    -fx-table-cell-border-color: -fx-four-color;
+    -fx-table-header-border-color: transparent;
+    -fx-padding: 5;
+}
+
+.table-view .column-header .label {
+    -fx-font-size: 18pt;
+    -fx-font-family: "Arial Narrow";
+    -fx-text-fill: white; /*Color del texto*/
+    -fx-background-color: -fx-primary-color;
+    -fx-alignment: center-left;
+    -fx-opacity: 1;
+}
+
+/* Selected item tableview */
+
+.table-view:focused .table-row-cell:filled:focused:selected {
+    -fx-background-color: -fx-third-color;
+    -fx-table-cell-border-color: transparent;
+
+}
+
+.table-row-cell:selected {
+    -fx-background-color: -fx-secondary-color;
+}
+/* hbox and vbox inside of borderpane*/
+
+HBox {
+    -fx-background-color: -fx-secondary-color;
+}
+
+/* toolbar style */
+
+ToolBar {
+    -fx-background-color: -fx-secondary-color;
+}
+
+
+/* Menubar style */
+
+.menu-bar {
+    -fx-background-color: -fx-secondary-color;
+    -fx-font-color: red;
+    -fx-font-family: "Arial";
+    -fx-font-size: 8pt;
+}
+
+/* Contextmenu style */
+
+.context-menu {
+    -fx-background-color: -fx-four-color;
+}
+
+.menu-bar .label {
+    -fx-font-size: 14pt;
+    -fx-font-family: "Arial";
+    -fx-text-fill: black;
+    -fx-opacity: 1;
+}
+
+.text-field {
+    -fx-font-size: 12pt;
+    -fx-font-family: "Arial";
+}
+.text-area {
+    -fx-font-size: 12pt;
+    -fx-font-family: -fx-primary-font-family;
+}
+.button {
+    -fx-padding: 5 22 5 22;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: -fx-third-color;
+    -fx-font-family: "Arial";
+    -fx-font-size: 11pt;
+    -fx-text-fill: -fx-primary-color;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.togglebutton{
+}
+
+.button:pressed, .button:default:hover:pressed {
+  -fx-background-color: white;
+  -fx-text-fill: -fx-primary-color;
+}
+
+.button:default {
+    -fx-background-color: -fx-third-color;
+    -fx-text-fill: -fx-primary-color;
+}
+
