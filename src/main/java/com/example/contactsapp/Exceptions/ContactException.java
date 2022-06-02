@@ -1,4 +1,4 @@
-package com.example.contactsapp;
+package com.example.contactsapp.Exceptions;
 
 public class ContactException extends Exception{
     private ErrorCode error;

@@ -14,13 +14,13 @@
     <content>
         <GridPane vgap="10" hgap="10">
             <Label text="Name: " GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-            <TextField fx:id="name" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <TextField fx:id="name" GridPane.rowIndex="0" GridPane.columnIndex="1" editable="false"/>
             <Label text="Surname: " GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-            <TextField fx:id="surname" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <TextField fx:id="surname" GridPane.rowIndex="1" GridPane.columnIndex="1" editable="false"/>
             <Label text="Phone: " GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-            <TextField fx:id="phone" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <TextField fx:id="phone" GridPane.rowIndex="2" GridPane.columnIndex="1" editable="false"/>
             <Label text="Comment: " GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-            <TextArea fx:id="comment" GridPane.rowIndex="3" GridPane.columnIndex="1" wrapText="true"/>
+            <TextArea fx:id="comment" GridPane.rowIndex="3" GridPane.columnIndex="1" wrapText="true" editable="false"/>
         </GridPane>
     </content>
 

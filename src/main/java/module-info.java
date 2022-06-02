@@ -10,4 +10,6 @@ module com.example.contactsapp {
 
     exports com.example.contactsapp.controller;
     opens com.example.contactsapp.controller to javafx.fxml;
+    exports com.example.contactsapp.Exceptions;
+    opens com.example.contactsapp.Exceptions to javafx.fxml;
 }

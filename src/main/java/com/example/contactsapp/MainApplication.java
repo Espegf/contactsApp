@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
@@ -17,11 +18,13 @@ public class MainApplication extends Application {
     public void start(Stage stage) throws IOException {
        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("contact-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+        scene.getStylesheets().add("Style.css");
         stage.setTitle("Contact List");
         stage.setScene(scene);
+        stage.getIcons().add(new Image("/app-icon.jpg"));
         stage.setResizable(true);
-        stage.addEventHandler(KeyEvent.KEY_PRESSED, (evento) -> {
-            switch (evento.getCode().getCode()) {
+        stage.addEventHandler(KeyEvent.KEY_PRESSED, (event) -> {
+            switch (event.getCode().getCode()) {
                 case 122: { // 122 = f11
                     stage.setFullScreen(true);
                     break;

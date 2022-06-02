@@ -6,10 +6,10 @@
     -fx-four-color: derive(-fx-primary-color, 50%)
 */
 
-    -fx-primary-color: rgb(192, 37, 243);
-    -fx-secondary-color: derive(-fx-primary-color, 50%);
-    -fx-third-color: rgb(79, 75, 80);
-    -fx-four-color: rgb(110, 96, 115);
+    -fx-primary-color: rgb(78, 49, 89); /*Lila*/
+    -fx-secondary-color: derive(-fx-primary-color, 50%); /*Lila claro*/
+    -fx-third-color: rgb(242, 228, 247); /*Casi blanco*/
+    -fx-four-color: rgb(110, 96, 115); /*Gris*/
 }
 
 .border-pane{
@@ -19,9 +19,9 @@
 /* Tableview style */
 
 .table-view {
-    -fx-base: -fx-four-color;
+    -fx-base: -fx-primary-color;
     -fx-control-inner-background: -fx-four-color;
-    -fx-background-color: -fx-four-color;
+    -fx-background-color: -fx-primary-color;
     -fx-table-cell-border-color: -fx-four-color;
     -fx-table-header-border-color: transparent;
     -fx-padding: 5;
@@ -30,22 +30,39 @@
 .table-view .column-header .label {
     -fx-font-size: 18pt;
     -fx-font-family: "Arial Narrow";
-    -fx-text-fill: white; /*Color del texto*/
+    -fx-text-fill: -fx-third-color; /*Color del texto*/
     -fx-background-color: -fx-primary-color;
-    -fx-alignment: center-left;
+    -fx-alignment: center;
     -fx-opacity: 1;
 }
-
-/* Selected item tableview */
+ /*Selected item tableview */
 
 .table-view:focused .table-row-cell:filled:focused:selected {
-    -fx-background-color: -fx-third-color;
+    -fx-background-color: -fx-secondary-color;
     -fx-table-cell-border-color: transparent;
+}
 
+/* The first selected row */
+.table-row-cell:selected .text {
+  -fx-fill: -fx-third-color;
 }
 
 .table-row-cell:selected {
     -fx-background-color: -fx-secondary-color;
+    -fx-table-cell-border-color: transparent;
+    -fx-text-fill: -fx-third-color;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: derive(-fx-secondary-color,80%);
+    -fx-table-cell-border-color: transparent;
+    -fx-text-fill: -fx-third-color;
+}
+
+.table-row-cell:selected:hover {
+    -fx-background-color: derive(-fx-secondary-color,95%);
+    -fx-table-cell-border-color: transparent;
+    -fx-text-fill: -fx-third-color;
 }
 /* hbox and vbox inside of borderpane*/
 
@@ -63,11 +80,25 @@ ToolBar {
 /* Menubar style */
 
 .menu-bar {
+    -fx-padding: 5 0 5 5;
     -fx-background-color: -fx-secondary-color;
-    -fx-font-color: red;
-    -fx-font-family: "Arial";
-    -fx-font-size: 8pt;
+    -fx-font-color: -fx-third-color;
+    -fx-font-family: "Arial Narrow";
+    -fx-font-size: 12pt;
+
 }
+
+.menu {
+    -fx-background-color: -fx-primary-color;
+}
+
+.menu-bar .label {
+    -fx-font-size: 14pt;
+    -fx-font-family: "Arial Narrow";
+    -fx-text-fill: -fx-third-color;
+    -fx-opacity: 1;
+}
+
 
 /* Contextmenu style */
 
@@ -75,43 +106,99 @@ ToolBar {
     -fx-background-color: -fx-four-color;
 }
 
-.menu-bar .label {
+#search {
     -fx-font-size: 14pt;
-    -fx-font-family: "Arial";
-    -fx-text-fill: black;
-    -fx-opacity: 1;
+    -fx-font-family: "Arial Narrow";
+    -fx-text-fill: -fx-third-color;
+    -fx-background-color: -fx-primary-color;
+
 }
 
-.text-field {
-    -fx-font-size: 12pt;
-    -fx-font-family: "Arial";
-}
-.text-area {
-    -fx-font-size: 12pt;
-    -fx-font-family: -fx-primary-font-family;
-}
 .button {
     -fx-padding: 5 22 5 22;
     -fx-border-color: transparent;
     -fx-border-width: 0;
     -fx-background-radius: 0;
-    -fx-background-color: -fx-third-color;
-    -fx-font-family: "Arial";
-    -fx-font-size: 11pt;
-    -fx-text-fill: -fx-primary-color;
+    -fx-background-color: -fx-primary-color;
+    -fx-font-family: "Arial Narrow";
+    -fx-font-size: 16pt;
+    -fx-text-fill: -fx-four-color;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
+
 }
 
-.togglebutton{
+ToggleButton {
+    -fx-background-color: -fx-primary-color;
+    -fx-text-fill: -fx-four-color;
+    -fx-font-size: 12pt;
+
 }
 
-.button:pressed, .button:default:hover:pressed {
-  -fx-background-color: white;
+
+.toggle-button:selected{
+    -fx-background-color: transparent;
+}
+
+.toggle-button:hover{
+    -fx-background-color: derive(-fx-primary-color, 40%);
+}
+
+.button:pressed{
+  -fx-background-color: -fx-secondary-color;
+  -fx-text-fill: -fx-third-color;
+}
+
+.button:hover{
+    -fx-background-color: derive(-fx-primary-color, 40%);
+}
+
+ /* Dialog */
+
+.dialog-pane{
+    -fx-background-color: -fx-four-color;
+    -fx-font-family: "Arial Narrow";
+    -fx-text-fill: -fx-third-color;
+    -fx-font-size: 14pt;
+}
+
+/* Alert style */
+.dialog-pane:header .header-panel{
+  -fx-font-size:17pt;
+  -fx-background-color: -fx-four-color;
   -fx-text-fill: -fx-primary-color;
+  -fx-font-family: "Arial Narrow";
 }
 
-.button:default {
-    -fx-background-color: -fx-third-color;
-    -fx-text-fill: -fx-primary-color;
+GridPane .label{
+    -fx-text-fill: -fx-third-color;
+    -fx-font-size: 14pt;
+    -fx-font-family: "Arial Narrow";
 }
+
+.text-field{
+    -fx-padding: 5 22 5 22;
+    -fx-font-size: 14pt;
+    -fx-font-family: "Arial Narrow";
+    -fx-text-fill: -fx-third-color;
+    -fx-background-color: -fx-secondary-color;
+
+}
+.text-area {
+    -fx-padding: 5 1 5 8;
+    -fx-font-size: 14pt;
+    -fx-font-family: "Arial Narrow";
+    -fx-text-fill: -fx-third-color;
+    -fx-background-color: -fx-secondary-color;
+}
+
+.text-area .content{
+    -fx-font-size: 14pt;
+    -fx-font-family: "Arial Narrow";
+    -fx-text-fill: -fx-third-color;
+    -fx-background-color: -fx-secondary-color;
+}
+
+
+
+
 
