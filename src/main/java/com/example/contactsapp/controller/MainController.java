@@ -281,8 +281,11 @@ public class MainController {
         alert.setTitle("Close app");
         alert.setHeaderText("Exit");
         alert.setContentText("Are you sure?");
+        alert.getButtonTypes().set(0,acceptButton);
+        alert.getButtonTypes().set(1,cancelButton);
+
         Optional<ButtonType> respose = alert.showAndWait();
-        if (respose.isPresent() && respose.get() == ButtonType.OK){
+        if (respose.isPresent() && respose.get() == acceptButton){
             Platform.exit();
         }
     }
@@ -309,6 +312,20 @@ public class MainController {
                 tableViewContacts.getSelectionModel().select(c);
             }
 
+    }
+
+    public void help(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.getDialogPane().getStylesheets().add("Style.css");
+        alert.setResizable(true);
+        alert.setTitle("Help");
+        alert.setHeaderText("Exit");
+        alert.setContentText("Press F11 for full screen \nPress ESC or SUPPRESS to exit of full screen");
+        alert.getButtonTypes().set(0,closeButton);
+
+        Optional<ButtonType> respose = alert.showAndWait();
+        if (respose.isPresent() && respose.get() == closeButton){
+        }
     }
 
 }

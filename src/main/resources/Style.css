@@ -134,7 +134,7 @@ ToolBar {
     -fx-background-color: -fx-primary-color;
     -fx-font-family: "Arial Narrow";
     -fx-font-size: 16pt;
-    -fx-text-fill: -fx-four-color;
+    -fx-text-fill: -fx-third-color;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 
 }

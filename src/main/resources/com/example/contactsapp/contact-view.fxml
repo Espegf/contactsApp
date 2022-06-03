@@ -66,6 +66,7 @@
                         </graphic>
                     </ToggleButton>
                     <TextField fx:id="search" onKeyReleased="#handleDisplayContactStartWith"/>
+                    <Button style="-fx-text-fill:rgb(242, 228, 247); -fx-font-size:14pt" text="Help" onAction="#help"/>
                     <Button style="-fx-text-fill:rgb(242, 228, 247); -fx-font-size:14pt" text="Exit" onAction="#exitApp"/>
                 </ToolBar>
         </HBox>
