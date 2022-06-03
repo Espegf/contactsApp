@@ -59,6 +59,11 @@
     -fx-text-fill: -fx-third-color;
 }
 
+.table-row-cell {
+    -fx-font-size: 14pt;
+    -fx-font-family: "Arial Narrow";
+}
+
 .table-row-cell:selected:hover {
     -fx-background-color: derive(-fx-secondary-color,95%);
     -fx-table-cell-border-color: transparent;
@@ -99,6 +104,13 @@ ToolBar {
     -fx-opacity: 1;
 }
 
+.menu-item {
+    -fx-font-size: 12pt;
+}
+.menu-item:focused {
+    -fx-background-color: -fx-primary-color;
+}
+
 
 /* Contextmenu style */
 
@@ -135,26 +147,26 @@ ToggleButton {
 }
 
 
-.toggle-button:selected{
+.toggle-button:selected {
     -fx-background-color: transparent;
 }
 
-.toggle-button:hover{
+.toggle-button:hover {
     -fx-background-color: derive(-fx-primary-color, 40%);
 }
 
-.button:pressed{
+.button:pressed {
   -fx-background-color: -fx-secondary-color;
   -fx-text-fill: -fx-third-color;
 }
 
-.button:hover{
+.button:hover {
     -fx-background-color: derive(-fx-primary-color, 40%);
 }
 
  /* Dialog */
 
-.dialog-pane{
+.dialog-pane {
     -fx-background-color: -fx-four-color;
     -fx-font-family: "Arial Narrow";
     -fx-text-fill: -fx-third-color;
@@ -162,20 +174,32 @@ ToggleButton {
 }
 
 /* Alert style */
-.dialog-pane:header .header-panel{
-  -fx-font-size:17pt;
+.dialog-pane:header .header-panel {
   -fx-background-color: -fx-four-color;
   -fx-text-fill: -fx-primary-color;
   -fx-font-family: "Arial Narrow";
+  -fx-font-size: 17pt;
 }
 
-GridPane .label{
+.dialog-pane:header .header-panel .label {
+  -fx-font-size:17pt;
+  -fx-text-fill: -fx-third-color;
+  -fx-font-family: "Arial Narrow";
+}
+
+.dialog-pane > .content.label {
+   -fx-text-fill:-fx-third-color;
+   -fx-font-family: "Arial Narrow";
+   -fx-font-size:14pt;
+}
+
+GridPane .label {
     -fx-text-fill: -fx-third-color;
     -fx-font-size: 14pt;
     -fx-font-family: "Arial Narrow";
 }
 
-.text-field{
+.text-field {
     -fx-padding: 5 22 5 22;
     -fx-font-size: 14pt;
     -fx-font-family: "Arial Narrow";
@@ -191,7 +215,7 @@ GridPane .label{
     -fx-background-color: -fx-secondary-color;
 }
 
-.text-area .content{
+.text-area .content {
     -fx-font-size: 14pt;
     -fx-font-family: "Arial Narrow";
     -fx-text-fill: -fx-third-color;

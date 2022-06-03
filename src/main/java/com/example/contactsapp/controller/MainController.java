@@ -269,16 +269,7 @@ public class MainController {
     @FXML
     public void eraseWContact(){
         Contact c = tableViewContacts.getSelectionModel().getSelectedItem();
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.getDialogPane().getStylesheets().add("Style.css");
-        alert.setTitle("Erase a contact");
-        alert.setHeaderText("Delete a contact");
-        alert.setContentText("Are you sure?");
-
-        Optional<ButtonType> response = alert.showAndWait();
-        if (response.isPresent() && response.get() == ButtonType.OK){
-            ContactSingleton.getInstance().deleteContact(c);
-        }
+        eraseContact(c);
     }
 
     //Método de salida de la app en el menú
